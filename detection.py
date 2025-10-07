@@ -1,5 +1,6 @@
 # Execute utilizando:
 # python detection.py --input diretorio_do_arquivo
+# Esc - para sair
 
 import cv2
 import time
