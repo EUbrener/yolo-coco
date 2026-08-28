@@ -1,0 +1,65 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: yolo-coco
+  title: "yolo-coco"
+  description: "Usando base de dados do COCO, aplica treinamento com a rede YOLO"
+  annotations:
+    github.com/project-slug: "EUbrener/yolo-coco"
+spec:
+  owner: user:default/guest
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: coco-api
+  title: "coco-api"
+  description: "API coco-api (openapi)"
+  annotations:
+    github.com/project-slug: "EUbrener/yolo-coco"
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: user:default/guest
+  system: yolo-coco
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: coco-api
+      version: 1.0.0
+    paths: {}
+---
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: yolo
+  title: "yolo"
+  description: "Recurso yolo (database)"
+  tags:
+    - modelo-ultralytics
+  annotations:
+    github.com/project-slug: "EUbrener/yolo-coco"
+spec:
+  type: database
+  lifecycle: experimental
+  owner: user:default/guest
+  system: yolo-coco
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: backend
+  title: "backend"
+  description: "Componente backend (service)"
+  tags:
+    - python
+  annotations:
+    github.com/project-slug: "EUbrener/yolo-coco"
+spec:
+  type: service
+  lifecycle: experimental
+  owner: user:default/guest
+  system: yolo-coco
+  dependsOn:
+    - api:default/coco-api
+    - resource:default/yolo
