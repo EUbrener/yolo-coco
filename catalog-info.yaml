@@ -12,9 +12,9 @@ spec:
 apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
-  name: coco-api
-  title: "coco-api"
-  description: "API coco-api (openapi)"
+  name: yolo
+  title: "Yolo"
+  description: "API Yolo (openapi)"
   annotations:
     github.com/project-slug: "EUbrener/yolo-coco"
 spec:
@@ -25,18 +25,18 @@ spec:
   definition: |
     openapi: 3.0.0
     info:
-      title: coco-api
+      title: Yolo
       version: 1.0.0
     paths: {}
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  name: yolo
-  title: "yolo"
-  description: "Recurso yolo (database)"
+  name: coco
+  title: "coco"
+  description: "Recurso coco (database)"
   tags:
-    - modelo-ultralytics
+    - database
   annotations:
     github.com/project-slug: "EUbrener/yolo-coco"
 spec:
@@ -61,5 +61,5 @@ spec:
   owner: user:default/guest
   system: yolo-coco
   dependsOn:
-    - api:default/coco-api
-    - resource:default/yolo
+    - api:default/yolo
+    - resource:default/coco
